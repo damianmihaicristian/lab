@@ -1,0 +1,32 @@
+<!-- <mat-card class="update-form-card">
+  <mat-card-header>
+    <mat-card-title>Update Intern</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #internForm="ngForm" (ngSubmit)="updateIntern()" class="form-container" *ngIf="intern">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="intern.name" name="name" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input matInput type="number" [(ngModel)]="intern.age" name="age" required min="0">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="intern.dateOfBirth" name="dateOfBirth" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="button-row">
+        <button mat-button type="button" [routerLink]="['/interns']">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!internForm.valid">Update</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card> -->
+<p> works </p>
