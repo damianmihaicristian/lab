@@ -36,7 +36,7 @@ namespace WebApplication1.Controllers
             intern.Id = _interns.Count > 0 ? _interns.Max(i => i.Id) + 1 : 1;
             _interns.Add(intern);
 
-            if(intern.Name == null || intern.Age == 0 || intern.DateOfBirth>DateTime.Today) {
+            if(intern.Name == null || intern.Age == 0 || intern.DateOfBirth > DateTime.Now) {
                 return BadRequest();
             }
             
