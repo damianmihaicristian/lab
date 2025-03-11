@@ -7,7 +7,7 @@ import {  RouterLink, RouterOutlet } from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [ MatIconModule, MatToolbar, RouterOutlet, ],
+  imports: [ MatIconModule, MatToolbar, RouterOutlet, RouterLink],
 })
 export class AppComponent   {
 

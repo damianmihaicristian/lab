@@ -9,6 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { InternService } from '../intern.service';
 import { Intern } from '../intern.model';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-intern-list',
@@ -17,6 +18,7 @@ import { Intern } from '../intern.model';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     MatCardModule,
     MatTableModule,
     MatButtonModule,
@@ -61,4 +63,24 @@ export class InternListComponent implements OnInit {
       });
     });
   }
+
+  updateIntern(id: number, newIntern: Intern): void {
+    this.loading = true;
+    this.internService.updateIntern(id, newIntern).subscribe({
+      next: () => {
+        this.loadInterns();
+        this.snackBar.open('Intern updated successfully', 'Close', {
+          duration: 3000
+        });
+      },
+      error: (error) => {
+        this.snackBar.open('Error updating intern: ' + error.message, 'Close', {
+          duration: 3000
+        });
+      },
+      complete: () => {
+        this.loading = false;
+      }
+    });
+}
 }

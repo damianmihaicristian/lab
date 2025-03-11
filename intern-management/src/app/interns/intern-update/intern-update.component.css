@@ -16,7 +16,11 @@
 
 .button-row {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
   justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 20px;
+}
+
+mat-card-content {
+  padding: 16px;
 }

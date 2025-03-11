@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { InternListComponent } from './interns/intern-list/intern-list.component';
 import { InternAddComponent } from './interns/intern-add/intern-add.component';
 import { InternUpdateComponent } from './interns/intern-update/intern-update.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { InternUpdateComponent } from './interns/intern-update/intern-update.com
     InternUpdateComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     RouterModule,
     BrowserAnimationsModule,
