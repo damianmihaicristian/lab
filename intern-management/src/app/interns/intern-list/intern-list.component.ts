@@ -11,8 +11,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { InternService } from '../intern.service';
 import { Intern } from '../intern.model';
-import { MatOptgroup, MatOption } from '@angular/material/core';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
@@ -33,10 +31,6 @@ import { MatMenuModule } from '@angular/material/menu';
     MatProgressBarModule,
     MatTooltipModule,
     MatSortModule,
-    MatOption,
-    MatFormField,
-    MatLabel,
-    MatSelect,
     MatSelectModule,
     FormsModule,
     MatMenuModule,
