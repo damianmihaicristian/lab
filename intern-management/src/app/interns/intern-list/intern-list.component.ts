@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { InternService } from '../intern.service';
 import { Intern } from '../intern.model';
-import { RouterModule } from '@angular/router';
+import { MatOptgroup, MatOption } from '@angular/material/core';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-intern-list',
@@ -24,28 +28,46 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatProgressBarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSortModule,
+    MatOption,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    
   ]
 })
-export class InternListComponent implements OnInit {
-  interns: Intern[] = [];
+export class InternListComponent implements OnInit, AfterViewInit {
+  dataSource = new MatTableDataSource<Intern>([]);
   displayedColumns: string[] = ['name', 'age', 'dateOfBirth', 'actions'];
   loading = false;
+
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private internService: InternService,
     private snackBar: MatSnackBar
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loadInterns();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.sortingDataAccessor = (item: Intern, property: string) => {
+      switch(property) {
+        case 'dateOfBirth': return item.dateOfBirth ? new Date(item.dateOfBirth).getTime() : 0;
+        default: return (item as any)[property];
+      }
+    };
   }
 
   loadInterns(): void {
     this.loading = true;
     this.internService.getInterns().subscribe({
       next: (interns) => {
-        this.interns = interns;
+        this.dataSource.data = interns;
         this.loading = false;
       },
       error: (error) => {
@@ -82,5 +104,5 @@ export class InternListComponent implements OnInit {
         this.loading = false;
       }
     });
-}
+  }
 }
