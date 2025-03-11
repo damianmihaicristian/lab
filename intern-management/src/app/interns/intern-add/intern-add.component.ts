@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { InternService } from '../intern.service';
 import { Intern } from '../intern.model';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, AbstractControl, ValidatorFn } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NameValidatorDirective } from '../../shared/validators/name.validator';
 
 @Component({
   selector: 'app-intern-add',
@@ -29,7 +30,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCardModule,
     MatIconModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NameValidatorDirective
   ]
 })
 export class InternAddComponent {

@@ -7,13 +7,14 @@
     <form #internForm="ngForm" (ngSubmit)="addIntern()" class="form-container">
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="intern.name" name="name" required>
-        <mat-error *ngIf="internForm.controls['name']?.invalid">Name is required</mat-error>
+        <input matInput [(ngModel)]="intern.name" name="name" required nameValidator #name="ngModel">
+        <mat-error *ngIf="name.errors?.['required']">Name is required</mat-error>
+        <mat-error *ngIf="name.errors?.['invalidName']">Name can only contain letters and spaces</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Age</mat-label>
-        <input matInput type="number" [(ngModel)]="intern.age" name="age" required min="0" placeholder="0">
+        <input matInput type="number" [(ngModel)]="intern.age" name="age" required min="0">
         <mat-error *ngIf="internForm.controls['age']?.invalid">Valid age is required</mat-error>
       </mat-form-field>
 
@@ -26,7 +27,7 @@
       </mat-form-field>
 
       <div class="button-row">
-        <button mat-button type="button" routerLink="/intern">Cancel</button>
+        <button mat-button type="button" routerLink="">Cancel</button>
         <button mat-raised-button color="primary" type="submit" [disabled]="!internForm.valid">Add Intern</button>
       </div>
     </form>

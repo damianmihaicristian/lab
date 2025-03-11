@@ -8,8 +8,8 @@ import { NgModule } from '@angular/core';
 export const routes: Routes = [
   { path: '', component: InternListComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'intern/add', component: InternAddComponent },
-  { path: 'intern/update/:id', component: InternUpdateComponent },
+  { path: 'add', component: InternAddComponent },
+  { path: 'update/:id', component: InternUpdateComponent },
   { path: '**', redirectTo: '' }
 ];
 

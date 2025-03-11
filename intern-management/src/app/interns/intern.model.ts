@@ -3,6 +3,4 @@ export class Intern {
     name?: string = '';
     age?: number = 0;
     dateOfBirth?: Date = new Date();
-
-
   }

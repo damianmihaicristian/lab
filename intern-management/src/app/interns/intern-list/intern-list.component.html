@@ -39,7 +39,7 @@
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let intern">
-              <button mat-icon-button color="primary" [routerLink]="['/intern/update', intern.id]">
+              <button mat-icon-button color="primary" [routerLink]="['/update', intern.id]">
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-icon-button color="warn" (click)="deleteIntern(intern.id)">
@@ -55,7 +55,7 @@
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button mat-raised-button color="primary" routerLink="/intern/add">
+      <button mat-raised-button color="primary" routerLink="/add">
         <mat-icon>add</mat-icon>
         Add New Intern
       </button>
