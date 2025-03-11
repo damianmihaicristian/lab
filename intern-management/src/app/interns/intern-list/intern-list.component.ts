@@ -14,6 +14,9 @@ import { Intern } from '../intern.model';
 import { MatOptgroup, MatOption } from '@angular/material/core';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-intern-list',
@@ -34,13 +37,23 @@ import { MatSelect } from '@angular/material/select';
     MatFormField,
     MatLabel,
     MatSelect,
-    
+    MatSelectModule,
+    FormsModule,
+    MatMenuModule,
+    MatTooltipModule,
   ]
 })
 export class InternListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Intern>([]);
   displayedColumns: string[] = ['name', 'age', 'dateOfBirth', 'actions'];
   loading = false;
+
+  dateFormats = [
+    { value: 'EEEE, MMMM d, y', display: 'Monday, June 15, 2015' },
+    { value: 'MMM d, y', display: 'Jun 15, 2015' },
+    { value: 'M/d/yy', display: '6/15/15' }
+  ];
+  selectedDateFormat = this.dateFormats[0].value;
 
   @ViewChild(MatSort) sort!: MatSort;
 

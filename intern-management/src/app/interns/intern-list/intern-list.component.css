@@ -38,3 +38,32 @@ table {
 .mat-card-actions {
   padding: 16px;
 }
+
+.date-format-selector {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.date-format-selector mat-form-field {
+  width: 250px;
+}
+
+.mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+button.mat-menu-item {
+  display: flex;
+  align-items: center;
+}
+
+button.mat-menu-item mat-icon {
+  margin-right: 8px;
+}
