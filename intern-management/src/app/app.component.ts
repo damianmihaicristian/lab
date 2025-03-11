@@ -10,6 +10,5 @@ import { RouterOutlet } from '@angular/router';
   imports: [ MatIconModule, MatToolbar, RouterOutlet],
 })
 export class AppComponent   {
-
   title = 'Intern Management';
 }

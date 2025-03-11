@@ -112,4 +112,8 @@ export class InternListComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  sortByName(): void {
+    this.dataSource.data = this.dataSource.data.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? ''));
+  }
 }

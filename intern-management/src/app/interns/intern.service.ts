@@ -7,7 +7,7 @@ import { Intern } from './intern.model';
   providedIn: 'root'
 })
 export class InternService {
-  private apiUrl = 'http://localhost:7072/api/Intern';
+  private apiUrl = 'http://localhost:7072/api';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -22,18 +22,18 @@ export class InternService {
   }
 
   getIntern(id: number): Observable<Intern> {
-    return this.http.get<Intern>(`${this.apiUrl}/${id}`, this.httpOptions);
+    return this.http.get<Intern>(`${this.apiUrl}/get/${id}`, this.httpOptions);
   }
 
   addIntern(intern: Intern): Observable<Intern> {
-    return this.http.post<Intern>(this.apiUrl, intern, this.httpOptions);
+    return this.http.post<Intern>(`${this.apiUrl}/add`, intern, this.httpOptions);
   }
 
   updateIntern(id: number, intern: Intern): Observable<Intern> {
-    return this.http.put<Intern>(`${this.apiUrl}/${id}`, intern, this.httpOptions);
+    return this.http.put<Intern>(`${this.apiUrl}/update/${id}`, intern, this.httpOptions);
   }
 
   deleteIntern(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`, this.httpOptions);
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`, this.httpOptions);
   }
 }

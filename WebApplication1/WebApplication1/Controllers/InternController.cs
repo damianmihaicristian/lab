@@ -4,7 +4,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class InternController : ControllerBase
     {
@@ -19,7 +19,7 @@ namespace WebApplication1.Controllers
             return Ok(_interns);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("get/{id}")]
         public ActionResult<Intern> GetIntern(int id)
         {
             var intern = _interns.FirstOrDefault(i => i.Id == id);
@@ -30,15 +30,21 @@ namespace WebApplication1.Controllers
             return Ok(intern);
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public ActionResult<Intern> AddIntern(Intern intern)
         {
             intern.Id = _interns.Count > 0 ? _interns.Max(i => i.Id) + 1 : 1;
             _interns.Add(intern);
+
+            if(intern.Name == null || intern.Age == 0 || intern.DateOfBirth>DateTime.Today) {
+                return BadRequest();
+            }
+            
+
             return CreatedAtAction(nameof(GetIntern), new { id = intern.Id }, intern);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public ActionResult UpdateIntern(int id, Intern updatedIntern)
         {
             var intern = _interns.FirstOrDefault(i => i.Id == id);
@@ -52,7 +58,7 @@ namespace WebApplication1.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public ActionResult DeleteIntern(int id)
         {
             var intern = _interns.FirstOrDefault(i => i.Id == id);

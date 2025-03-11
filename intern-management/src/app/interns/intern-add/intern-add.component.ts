@@ -45,7 +45,7 @@ export class InternAddComponent {
     this.internService.addIntern(this.intern).subscribe({
       next: () => {
         this.snackBar.open('Intern added successfully', 'Close', { duration: 3000 });
-        this.router.navigate(['/intern']);
+        this.router.navigate(['']);
       },
       error: (error) => {
         this.snackBar.open('Error adding intern', 'Close', { duration: 3000 });
