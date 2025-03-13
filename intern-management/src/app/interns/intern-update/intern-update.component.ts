@@ -81,21 +81,4 @@ export class InternUpdateComponent implements OnInit {
       });
     }
   }
-  
-  loadIntern():void{
-    this.internService.getIntern(this.intern.id).subscribe({
-      next: (intern) => {
-        this.intern = intern;
-        if (this.intern.dateOfBirth) {
-          this.intern.dateOfBirth = new Date(this.intern.dateOfBirth);
-        }
-      },
-      error: (error) => {
-        this.snackBar.open('Error loading intern details', 'Close', {
-          duration: 3000
-        });
-        this.router.navigate(['/intern']);
-      }
-    });
-  }
 }
