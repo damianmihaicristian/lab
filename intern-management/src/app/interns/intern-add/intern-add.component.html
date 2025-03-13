@@ -14,7 +14,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Age</mat-label>
-        <input matInput type="number" [(ngModel)]="intern.age" name="age" required min="0">
+        <input matInput type="number" [(ngModel)]="intern.age" name="age" required min="0" placeholder="0">
         <mat-error *ngIf="internForm.controls['age']?.invalid">Valid age is required</mat-error>
       </mat-form-field>
 

@@ -63,7 +63,6 @@ describe('InternUpdateComponent', () => {
     router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     route = TestBed.inject(ActivatedRoute);
 
-    // Mock the return values of the service methods
     const mockIntern = {
       id: 1,
       name: 'John Doe',
