@@ -58,7 +58,7 @@ export class InternUpdateComponent implements OnInit {
           this.snackBar.open('Error loading intern details', 'Close', {
             duration: 3000
           });
-          this.router.navigate(['/intern']);
+          this.router.navigate(['']);
         }
       });
     }
